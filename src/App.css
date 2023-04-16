@@ -1,38 +1,149 @@
-.App {
-  text-align: center;
+:root {
+  /* Primary */
+  --LightCyan: hsl(193, 38%, 86%);
+  --NeonGreen: hsl(150, 100%, 66%);
+
+  /* Neutral */
+  --GrayishBlue: hsl(217, 19%, 38%);
+  --DarkGrayishBlue: hsl(217, 19%, 24%);
+  --DarkBlue: hsl(218, 23%, 16%);
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  background-color: var(--DarkBlue);
+  color: var(--DarkGrayishBlue);
+  font-family: 'Manrope', sans-serif;
+  font-size: 28px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+}
+
+.advise-card {
+  position: relative;
+  width: 500px;
+  background-color: var(--DarkGrayishBlue);
+  padding: 3rem;
+  border-radius: 8px;
+  color: #fff;
+  text-align: center;
+  padding-bottom: -4rem;
+}
+.advise-card .icon-box {
+  position: absolute;
+  bottom: -3.8rem;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  display: flex;
+  font-size: 40px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  background: var(--NeonGreen);
+  transition: all 0.3s ease-in-out;
+}
+.advise-card .icon-box .icon {
+  background: url('./assets/images/icon-dice.svg');
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+}
+.advise-card .icon-box .loading {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 23px;
+  cursor: not-allowed;
+  height: 23px;
+  animation: spin 2s linear infinite;
+}
+.advise-card .icon-box:hover {
+  cursor: pointer;
+  box-shadow: 2px 1px 20px 10px var(--NeonGreen);
+}
+.advise-card p {
+  font-size: 22px; 
+  font-weight: bold; 
+  color: var(--LightCyan); 
+}
+.advise-card p::before {
+  content: "\201C";
+  font-weight: normal;
+}
+.advise-card p::after {
+  content: "\201D";
+  font-weight: normal;
+}
+.advise-card .advise-tag {
+  font-size: 14px;
+  margin: .5rem 0;
+  letter-spacing: 3px;
+  font-weight: bold;
+  /* font-style: italic; */
+  color: var(--NeonGreen);
 }
 
-.App-link {
-  color: #61dafb;
+.advise-card .line {
+  /* border: 1px solid ; */
+  background: url('./assets/images/pattern-divider-desktop.svg');
+  width: 100%;
+  height: 20px;
+  margin-top: 1rem;
+  background-position: center;
+  /* object-fit: contain;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+  position: relative; */
+}
+/* .advise-card .line .left-line {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 40%;
+  border-bottom: 2px solid orange;
+}
+.advise-card .line .right-line {
+  content: "";
+  position: absolute;
+  right: 0;
+  height: 3px;
+  width: 40%;
+  border-bottom: 2px solid green;
+} */
+.advise-card .line .icon {
+  position: absolute;
+  right: 0;
+  left: 0;
+  transform: translate(630%, -50%);
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.attribution {
+  position: fixed;
+  bottom: 2rem;
+  right: 0;
+  left: 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
